@@ -30,6 +30,8 @@ Easily redirect visitors to a maintenance mode page or external URL while keepin
 - If a WordPress page is selected, it will automatically be set to "Published" when maintenance mode is active and revert to "Draft" when disabled.
 - The plugin does not affect the login page, REST API, or JSON endpoints.
 
+This plugin is great for "coming soon" pages, staging site protection, design previews, or any situation where you need to hide the main site while keeping access for yourself.
+
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/simple-maintenance-redirect/` directory.

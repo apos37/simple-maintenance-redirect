@@ -7,7 +7,7 @@
 /**
  * Define Namespaces
  */
-namespace Apos37\MaintenanceModeRedirect;
+namespace Apos37\SimpleMaintenanceRedirect;
 
 
 /**
