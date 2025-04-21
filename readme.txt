@@ -41,7 +41,7 @@ This plugin is great for "coming soon" pages, staging site protection, design pr
 == Frequently Asked Questions ==
 
 = Can I customize the maintenance page? = 
-Yes! You can select any existing WordPress page or set a custom external URL. If you choose a WordPress page, the plugin will automatically hide the header and footer so that your navigation bar and page styling is not visible if it's not ready to be revealed yet.
+Yes! Just create a page like you would normally and the plugin will automatically hide the header and footer so that your navigation bar and page styling is not visible. If you want to further customize the appearance of the page such as the background color, you can use CSS like you would any other page. A `maintenance-mode` class has been added to the body element for easier targeting. CSS can easily be added in your customizer.
 
 = Can I allow specific users or roles to bypass maintenance mode? = 
 Yes! Logged-in administrators are always allowed. You can also customize bypass conditions using the `smredirect_redirect_rules` filter.
@@ -64,7 +64,7 @@ add_filter( 'smredirect_redirect_rules', function( $checks, $page_id, $request_u
 Join my [Discord support server](https://discord.gg/3HnzNEJVnR)
 
 == Screenshots ==
-1. Settings page
+1. Settings and admin bar
 
 == Changelog ==
 = 1.0.1 =
