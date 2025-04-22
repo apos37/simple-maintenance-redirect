@@ -33,8 +33,8 @@ class AdminBar {
      *
      * @var string
      */
-    public $color_1 = '#870927';
-    public $color_2 = 'darkred';
+    public $color_1;
+    public $color_2;
 
 
     /**
@@ -46,6 +46,16 @@ class AdminBar {
         if ( !(new Settings())->enabled() ) {
             return;
         }
+
+        // Allow color overrides via filter
+        $defaults = [
+            'color_1' => '#870927', // Crimson Burgundy
+            'color_2' => '#8B0000', // Dark Red
+        ];
+        $colors = apply_filters( 'smredirect_admin_bar_colors', $defaults );
+
+        $this->color_1 = $colors[ 'color_1' ];
+        $this->color_2 = $colors[ 'color_2' ];
 
         // Change admin bar color when maintenance mode is active
         add_action( 'admin_head', [ $this, 'change_admin_bar_color' ] );
