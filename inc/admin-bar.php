@@ -33,8 +33,8 @@ class AdminBar {
      *
      * @var string
      */
-    public $color_1;
-    public $color_2;
+    public $color_1 = '#870927'; // Crimson Burgundy
+    public $color_2 = '#8B0000'; // Dark Red
 
 
     /**
@@ -47,16 +47,6 @@ class AdminBar {
             return;
         }
 
-        // Allow color overrides via filter
-        $defaults = [
-            'color_1' => '#870927', // Crimson Burgundy
-            'color_2' => '#8B0000', // Dark Red
-        ];
-        $colors = apply_filters( 'smredirect_admin_bar_colors', $defaults );
-
-        $this->color_1 = $colors[ 'color_1' ];
-        $this->color_2 = $colors[ 'color_2' ];
-
         // Change admin bar color when maintenance mode is active
         add_action( 'admin_head', [ $this, 'change_admin_bar_color' ] );
         add_action( 'wp_head', [ $this, 'change_admin_bar_color' ] );
@@ -68,14 +58,22 @@ class AdminBar {
      * Change the admin bar color when maintenance mode is active.
      */
     public function change_admin_bar_color() {
+        // Allow color overrides via filter
+        $defaults = [
+            'color_1' => $this->color_1,
+            'color_2' => $this->color_2
+        ];
+        $colors = apply_filters( 'smredirect_admin_bar_colors', $defaults );
+
+        // Add the style
         echo '<style>
             #wpadminbar { 
             background: repeating-linear-gradient(
                 -45deg, 
-                ' . esc_html( $this->color_1 ) . ', 
-                ' . esc_html( $this->color_1 ) . ' 10px, 
-                ' . esc_html( $this->color_2 ) . ' 10px, 
-                ' . esc_html( $this->color_2 ) . ' 20px
+                ' . esc_html( $colors[ 'color_1' ] ) . ', 
+                ' . esc_html( $colors[ 'color_1' ] ) . ' 10px, 
+                ' . esc_html( $colors[ 'color_2' ] ) . ' 10px, 
+                ' . esc_html( $colors[ 'color_2' ] ) . ' 20px
             ) !important; }
         </style>';
     } // End change_admin_bar_color()
