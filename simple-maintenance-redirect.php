@@ -41,31 +41,31 @@ $plugin_data = get_file_data( __FILE__, [
 ] );
 
 // Versions
-define( 'MMREDIRECT_VERSION', $plugin_data[ 'version' ] );
-define( 'MMREDIRECT_MIN_PHP_VERSION', $plugin_data[ 'requires_php' ] );
+define( 'SMREDIRECT_VERSION', $plugin_data[ 'version' ] );
+define( 'SMREDIRECT_MIN_PHP_VERSION', $plugin_data[ 'requires_php' ] );
 
 // Names
-define( 'MMREDIRECT_NAME', $plugin_data[ 'name' ] );
-define( 'MMREDIRECT_BASENAME', plugin_basename( __FILE__ ) );
-define( 'MMREDIRECT_TEXTDOMAIN', $plugin_data[ 'textdomain' ] );
-define( 'MMREDIRECT_DISCORD_SUPPORT_URL', $plugin_data[ 'support_uri' ] );
+define( 'SMREDIRECT_NAME', $plugin_data[ 'name' ] );
+define( 'SMREDIRECT_BASENAME', plugin_basename( __FILE__ ) );
+define( 'SMREDIRECT_TEXTDOMAIN', $plugin_data[ 'textdomain' ] );
+define( 'SMREDIRECT_DISCORD_SUPPORT_URL', $plugin_data[ 'support_uri' ] );
 
 // Paths
-define( 'MMREDIRECT_INCLUDES_ABSPATH', plugin_dir_path( __FILE__ ) . 'inc/' );
+define( 'SMREDIRECT_INCLUDES_ABSPATH', plugin_dir_path( __FILE__ ) . 'inc/' );
 
 
 /**
  * Prevent loading the plugin if PHP version is not minimum
  */
-if ( version_compare( PHP_VERSION, MMREDIRECT_MIN_PHP_VERSION, '<=' ) ) {
+if ( version_compare( PHP_VERSION, SMREDIRECT_MIN_PHP_VERSION, '<=' ) ) {
     add_action( 'admin_init', static function() {
-        deactivate_plugins( MMREDIRECT_BASENAME );
+        deactivate_plugins( SMREDIRECT_BASENAME );
     } );
     add_action( 'admin_notices', static function() {
         /* translators: 1: Plugin name, 2: Minimum PHP version */
         $message = sprintf( __( '"%1$s" requires PHP %2$s or newer.', 'simple-maintenance-redirect' ),
-            MMREDIRECT_NAME,
-            MMREDIRECT_MIN_PHP_VERSION
+            SMREDIRECT_NAME,
+            SMREDIRECT_MIN_PHP_VERSION
         );
         echo '<div class="notice notice-error"><p>' . esc_html( $message ) . '</p></div>';
     } );
@@ -76,7 +76,7 @@ if ( version_compare( PHP_VERSION, MMREDIRECT_MIN_PHP_VERSION, '<=' ) ) {
 /**
  * Includes
  */
-require_once MMREDIRECT_INCLUDES_ABSPATH . 'settings.php';
-require_once MMREDIRECT_INCLUDES_ABSPATH . 'maintenance-page.php';
-require_once MMREDIRECT_INCLUDES_ABSPATH . 'plugin-page.php';
-require_once MMREDIRECT_INCLUDES_ABSPATH . 'admin-bar.php';
+require_once SMREDIRECT_INCLUDES_ABSPATH . 'settings.php';
+require_once SMREDIRECT_INCLUDES_ABSPATH . 'maintenance-page.php';
+require_once SMREDIRECT_INCLUDES_ABSPATH . 'plugin-page.php';
+require_once SMREDIRECT_INCLUDES_ABSPATH . 'admin-bar.php';

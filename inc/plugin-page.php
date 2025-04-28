@@ -33,7 +33,7 @@ class PluginPage {
 	public function __construct() {
 
         // Add a settings link to plugins list page
-        add_filter( 'plugin_action_links_' . MMREDIRECT_BASENAME, [ $this, 'settings_link' ] );
+        add_filter( 'plugin_action_links_' . SMREDIRECT_BASENAME, [ $this, 'settings_link' ] );
 
         // Add links to the website and discord
         add_filter( 'plugin_row_meta', [ $this, 'plugin_row_meta' ], 10, 2 );
@@ -70,11 +70,11 @@ class PluginPage {
      */
     public function plugin_row_meta( $links, $file ) {
         // Only apply to this plugin
-        if ( MMREDIRECT_BASENAME == $file ) {
+        if ( SMREDIRECT_BASENAME == $file ) {
 
             // Add the link
             $row_meta = [
-                'discord' => '<a href="' . esc_url( MMREDIRECT_DISCORD_SUPPORT_URL ) . '" target="_blank">' . esc_html__( 'Discord Support', 'simple-maintenance-redirect' ) . '</a>'
+                'discord' => '<a href="' . esc_url( SMREDIRECT_DISCORD_SUPPORT_URL ) . '" target="_blank">' . esc_html__( 'Discord Support', 'simple-maintenance-redirect' ) . '</a>'
             ];
             return array_merge( $links, $row_meta );
         }
