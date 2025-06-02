@@ -1,15 +1,15 @@
 <?php
 /**
  * Plugin Name:         Simple Maintenance Redirect
- * Plugin URI:          https://github.com/apos37/simple-maintenance-redirect
+ * Plugin URI:          https://pluginrx.com/plugin/simple-maintenance-redirect/
  * Description:         Redirect users to a specified page or external URL while in maintanence mode
- * Version:             1.0.1
+ * Version:             1.1.0
  * Requires at least:   5.9
  * Tested up to:        6.8
  * Requires PHP:        7.4
  * Author:              PluginRx
  * Author URI:          https://pluginrx.com/
- * Support URI:         https://discord.gg/3HnzNEJVnR
+ * Discord URI:         https://discord.gg/3HnzNEJVnR
  * Text Domain:         simple-maintenance-redirect
  * License:             GPLv2 or later
  * License URI:         http://www.gnu.org/licenses/gpl-2.0.txt
@@ -37,7 +37,8 @@ $plugin_data = get_file_data( __FILE__, [
     'version'      => 'Version',
     'requires_php' => 'Requires PHP',
     'textdomain'   => 'Text Domain',
-    'support_uri'  => 'Support URI',
+    'author_uri'   => 'Author URI',
+    'discord_uri'  => 'Discord URI'
 ] );
 
 // Versions
@@ -49,6 +50,11 @@ define( 'SMREDIRECT_NAME', $plugin_data[ 'name' ] );
 define( 'SMREDIRECT_BASENAME', plugin_basename( __FILE__ ) );
 define( 'SMREDIRECT_TEXTDOMAIN', $plugin_data[ 'textdomain' ] );
 define( 'SMREDIRECT_DISCORD_SUPPORT_URL', $plugin_data[ 'support_uri' ] );
+define( 'SMREDIRECT_AUTHOR_URL', $plugin_data[ 'author_uri' ] );
+define( 'SMREDIRECT_GUIDE_URL', SMREDIRECT_AUTHOR_URL . 'guide/plugin/' . SMREDIRECT_TEXTDOMAIN . '/' );
+define( 'SMREDIRECT_DOCS_URL', SMREDIRECT_AUTHOR_URL . 'docs/plugin/' . SMREDIRECT_TEXTDOMAIN . '/' );
+define( 'SMREDIRECT_SUPPORT_URL', SMREDIRECT_AUTHOR_URL . 'support/plugin/' . SMREDIRECT_TEXTDOMAIN . '/' );
+define( 'SMREDIRECT_DISCORD_URL', $plugin_data[ 'discord_uri' ] );
 
 // Paths
 define( 'SMREDIRECT_INCLUDES_ABSPATH', plugin_dir_path( __FILE__ ) . 'inc/' );

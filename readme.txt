@@ -4,7 +4,7 @@ Tags: maintenance mode, coming soon, redirect, construction, staging
 Requires at least: 5.9
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -27,7 +27,6 @@ Easily redirect visitors to a maintenance mode page or external URL while keepin
 - Create and publish a page with your custom maintenance message.
 - Go to **Settings > General** and choose a **Maintenance Mode Page** or enter an **External URL**.
 - When enabled, visitors will be redirected to the selected page or URL. Logged-in administrators can still access the site.
-- If a WordPress page is selected, it will automatically be set to "Published" when maintenance mode is active and revert to "Draft" when disabled.
 - The plugin does not affect the login page, REST API, or JSON endpoints.
 
 This plugin is great for "coming soon" pages, staging site protection, design previews, or any situation where you need to hide the main site while keeping access for yourself.
@@ -61,11 +60,17 @@ add_filter( 'smredirect_redirect_rules', function( $checks, $page_id, $request_u
 ?>`
 
 = Where can I request features and get further support? =
-Join my [Discord support server](https://discord.gg/3HnzNEJVnR)
+We recommend using our [website support forum](https://pluginrx.com/support/plugin/simple-maintenance-redirect/) as the primary method for requesting features and getting help. You can also reach out via our [Discord support server](https://discord.gg/3HnzNEJVnR) or the [WordPress.org support forum](https://wordpress.org/support/plugin/simple-maintenance-redirect/), but please note that WordPress.org doesn’t always notify us of new posts, so it’s not ideal for time-sensitive issues.
+
+== Demo ==
+https://youtu.be/DTKGftmpBQ4
 
 == Screenshots ==
 1. Settings and admin bar
 
 == Changelog ==
+= 1.1.0 =
+* Update: New support links
+
 = 1.0.1 =
-* Initial Release on March 31, 2025
+* Initial Release on April 28, 2025
