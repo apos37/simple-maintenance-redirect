@@ -3,7 +3,7 @@
  * Plugin Name:         Simple Maintenance Redirect
  * Plugin URI:          https://pluginrx.com/plugin/simple-maintenance-redirect/
  * Description:         Redirect users to a specified page or external URL while in maintanence mode
- * Version:             1.1.0
+ * Version:             1.1.1
  * Requires at least:   5.9
  * Tested up to:        6.8
  * Requires PHP:        7.4
@@ -49,7 +49,6 @@ define( 'SMREDIRECT_MIN_PHP_VERSION', $plugin_data[ 'requires_php' ] );
 define( 'SMREDIRECT_NAME', $plugin_data[ 'name' ] );
 define( 'SMREDIRECT_BASENAME', plugin_basename( __FILE__ ) );
 define( 'SMREDIRECT_TEXTDOMAIN', $plugin_data[ 'textdomain' ] );
-define( 'SMREDIRECT_DISCORD_SUPPORT_URL', $plugin_data[ 'support_uri' ] );
 define( 'SMREDIRECT_AUTHOR_URL', $plugin_data[ 'author_uri' ] );
 define( 'SMREDIRECT_GUIDE_URL', SMREDIRECT_AUTHOR_URL . 'guide/plugin/' . SMREDIRECT_TEXTDOMAIN . '/' );
 define( 'SMREDIRECT_DOCS_URL', SMREDIRECT_AUTHOR_URL . 'docs/plugin/' . SMREDIRECT_TEXTDOMAIN . '/' );

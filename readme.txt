@@ -4,7 +4,7 @@ Tags: maintenance mode, coming soon, redirect, construction, staging
 Requires at least: 5.9
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -69,6 +69,9 @@ https://youtu.be/DTKGftmpBQ4
 1. Settings and admin bar
 
 == Changelog ==
+= 1.1.1 =
+* Fix: Login page blocked if redirected to a different page
+
 = 1.1.0 =
 * Update: New support links
 

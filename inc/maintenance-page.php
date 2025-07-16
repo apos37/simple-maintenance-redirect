@@ -96,10 +96,11 @@ class MaintenancePage {
         $request_uri = isset( $_SERVER[ 'REQUEST_URI' ] ) ? sanitize_url( wp_unslash( $_SERVER[ 'REQUEST_URI' ] ) ) : home_url( add_query_arg( [], '' ) );
 
         // The current page load must meet all these requirements to redirect
+        $login_path = wp_parse_url( wp_login_url(), PHP_URL_PATH );
         $checks = [
             'front_end'            => !is_admin(),
             'logged_out'           => !is_user_logged_in(),
-            'not_login_page'       => !isset( $_SERVER[ 'SCRIPT_NAME' ] ) || basename( sanitize_text_field( wp_unslash( $_SERVER[ 'SCRIPT_NAME' ] ) ) ) !== 'wp-login.php',
+            'not_login_page'       => strpos( $request_uri, $login_path ) === false,
             'not_json_page'        => !preg_match( '#^/wp-json/#', $request_uri ),
             'not_rest_request'     => !( defined( 'REST_REQUEST' ) && REST_REQUEST )
         ];
