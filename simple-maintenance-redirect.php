@@ -3,7 +3,7 @@
  * Plugin Name:         Simple Maintenance Redirect
  * Plugin URI:          https://pluginrx.com/plugin/simple-maintenance-redirect/
  * Description:         Redirect users to a specified page or external URL while in maintanence mode
- * Version:             1.1.1
+ * Version:             1.1.2
  * Requires at least:   5.9
  * Tested up to:        6.8
  * Requires PHP:        7.4

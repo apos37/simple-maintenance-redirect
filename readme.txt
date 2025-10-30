@@ -4,7 +4,7 @@ Tags: maintenance mode, coming soon, redirect, construction, staging
 Requires at least: 5.9
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -62,6 +62,21 @@ add_filter( 'smredirect_redirect_rules', function( $checks, $page_id, $request_u
 = Where can I request features and get further support? =
 We recommend using our [website support forum](https://pluginrx.com/support/plugin/simple-maintenance-redirect/) as the primary method for requesting features and getting help. You can also reach out via our [Discord support server](https://discord.gg/3HnzNEJVnR) or the [WordPress.org support forum](https://wordpress.org/support/plugin/simple-maintenance-redirect/), but please note that WordPress.org doesn’t always notify us of new posts, so it’s not ideal for time-sensitive issues.
 
+
+= Why does the redirect sometimes stay after I disable maintenance mode? =
+If a redirect was issued previously as a permanent redirect (HTTP 301) it can be cached by browsers and upstream caches (CDNs, reverse proxies). A cached 301 tells clients "this URL has moved permanently" and many browsers and proxies will continue using the cached result without checking the origin again.
+
+What we do now:
+
+- The plugin explicitly sends temporary redirects (HTTP 302) and uses no-cache headers to avoid creating new cached permanent redirects.
+- We also provide a JavaScript fallback (enqueued script) for rare situations where headers were already sent before the redirect could be emitted.
+
+How to fix it for visitors who still see the redirect:
+
+- Browser: Ask affected users to hard-refresh the page or clear their browser cache. On most browsers a hard refresh is Ctrl+F5 (Windows) or Cmd+Shift+R (macOS).
+- CDN / Reverse Proxy: If you use Cloudflare, Fastly, Varnish, nginx proxy_cache, or another caching layer, purge the cache for the affected URL (or do a full purge if necessary). On Cloudflare you can purge a single URL from the dashboard or use their API.
+- Server configs: Ensure no server-level rewrite or redirect (nginx/apache) has permanently redirected the route.
+
 == Demo ==
 https://youtu.be/DTKGftmpBQ4
 
@@ -69,6 +84,9 @@ https://youtu.be/DTKGftmpBQ4
 1. Settings and admin bar
 
 == Changelog ==
+= 1.1.2 =
+* Fix: Caching redirects
+
 = 1.1.1 =
 * Fix: Login page blocked if redirected to a different page
 

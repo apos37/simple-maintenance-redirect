@@ -66,24 +66,70 @@ class MaintenancePage {
             $page_id = $this->SETTINGS->get_page_id();
             if ( $page_id && get_post_status( $page_id ) === 'publish' ) {
             
-                // Only front-end, not logged in as admin, not login page, and not query string pw
                 if ( $this->should_redirect_to_page( $page_id ) )  {
 
-                    // Redirect
-                    wp_redirect( esc_url( get_permalink( $page_id ) ) );
+                    $redirect_url = esc_url( get_permalink( $page_id ) );
+
+                    if ( ! headers_sent()  ) {
+                        
+                        if ( function_exists( 'nocache_headers' ) ) {
+                            nocache_headers();
+                        }
+                        wp_redirect( $redirect_url, 302 );
+
+                    } else {
+
+                        echo '<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />';
+                        echo '<meta http-equiv="Pragma" content="no-cache" />';
+                        echo '<meta http-equiv="Expires" content="0" />';
+                        echo '<meta name="smredirect-url" content="' . esc_attr( $redirect_url ) . '" />';
+
+                        // Enqueue the fallback script via a class method (avoids inline closures and captures)
+                        add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_redirect_fallback_script' ] );
+                    }
                     exit;
                 }
             }
         } elseif ( $this->enabled == 'url' ) {
+
             $url = $this->SETTINGS->get_url();
             if ( $url && $this->should_redirect_to_page() ) {
 
-                // Redirect
-                wp_redirect( $url );
+                $redirect_url = esc_url( $url );
+
+                if ( ! headers_sent() ) {
+
+                    if ( function_exists( 'nocache_headers' ) ) {
+                        nocache_headers();
+                    }
+                    wp_redirect( $redirect_url, 302 );
+
+                } else {
+                    
+                    echo '<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />';
+                    echo '<meta http-equiv="Pragma" content="no-cache" />';
+                    echo '<meta http-equiv="Expires" content="0" />';
+                    echo '<meta name="smredirect-url" content="' . esc_attr( $redirect_url ) . '" />';
+
+                    add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_redirect_fallback_script' ] );
+                }
                 exit;
             }
         }
     } // End activate_maintenance_mode()
+
+    
+    /**
+     * Enqueue the external redirect fallback script (reads meta tag and redirects).
+     *
+     * @return void
+     */
+    public function enqueue_redirect_fallback_script() {
+        $handle = 'smredirect-fallback';
+        $src = plugins_url( 'inc/redirect-fallback.js', dirname( __DIR__ ) . '/simple-maintenance-redirect.php' );
+        wp_register_script( $handle, $src, [], SMREDIRECT_VERSION, true );
+        wp_enqueue_script( $handle );
+    } // End enqueue_redirect_fallback_script()
 
 
     /**
