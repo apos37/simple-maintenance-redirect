@@ -1,10 +1,10 @@
 === Simple Maintenance Redirect ===
 Contributors: apos37
 Tags: maintenance mode, coming soon, redirect, construction, staging
-Requires at least: 5.9
-Tested up to: 6.8
+Requires at least: 6.0
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.1.2
+Stable tag: 1.1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -84,6 +84,10 @@ https://youtu.be/DTKGftmpBQ4
 1. Settings and admin bar
 
 == Changelog ==
+= 1.1.2.1 =
+* Compatibility: Increased minimum required WordPress version to 6.0
+* Compatibility: Tested with WordPress 7.0
+
 = 1.1.2 =
 * Fix: Caching redirects
 
