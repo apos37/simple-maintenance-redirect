@@ -4,7 +4,7 @@ Tags: maintenance mode, coming soon, redirect, construction, staging
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.1.2.1
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -62,7 +62,6 @@ add_filter( 'smredirect_redirect_rules', function( $checks, $page_id, $request_u
 = Where can I request features and get further support? =
 We recommend using our [website support forum](https://pluginrx.com/support/plugin/simple-maintenance-redirect/) as the primary method for requesting features and getting help. You can also reach out via our [Discord support server](https://discord.gg/3HnzNEJVnR) or the [WordPress.org support forum](https://wordpress.org/support/plugin/simple-maintenance-redirect/), but please note that WordPress.org doesn’t always notify us of new posts, so it’s not ideal for time-sensitive issues.
 
-
 = Why does the redirect sometimes stay after I disable maintenance mode? =
 If a redirect was issued previously as a permanent redirect (HTTP 301) it can be cached by browsers and upstream caches (CDNs, reverse proxies). A cached 301 tells clients "this URL has moved permanently" and many browsers and proxies will continue using the cached result without checking the origin again.
 
@@ -77,6 +76,8 @@ How to fix it for visitors who still see the redirect:
 - CDN / Reverse Proxy: If you use Cloudflare, Fastly, Varnish, nginx proxy_cache, or another caching layer, purge the cache for the affected URL (or do a full purge if necessary). On Cloudflare you can purge a single URL from the dashboard or use their API.
 - Server configs: Ensure no server-level rewrite or redirect (nginx/apache) has permanently redirected the route.
 
+If the problem persists after clearing your browser cache and CDN, you can use the [Clear Cache Everywhere](https://wordpress.org/plugins/clear-cache-everywhere/) plugin to flush all cache layers from your WordPress dashboard.
+
 == Demo ==
 https://youtu.be/DTKGftmpBQ4
 
@@ -84,6 +85,17 @@ https://youtu.be/DTKGftmpBQ4
 1. Settings and admin bar
 
 == Changelog ==
+= 1.1.3 =
+* Fix: Redirect fallback script no longer blocked by premature exit
+* Fix: Incorrect path for redirect fallback script
+* Fix: Removed dead code branch in page ID sanitization
+* Fix: Double semicolon in maintenance mode CSS
+* Update: Added 503 Service Unavailable header during maintenance redirect
+* Update: Admin notice on General Settings page when maintenance mode is active
+* Update: Settings link now anchors directly to maintenance mode fields
+* Update: Added uninstall cleanup for all plugin options
+* Tweak: Changed namespace from Apos37\SimpleMaintenanceRedirect to PluginRx\SimpleMaintenanceRedirect
+
 = 1.1.2.1 =
 * Compatibility: Increased minimum required WordPress version to 6.0
 * Compatibility: Tested with WordPress 7.0

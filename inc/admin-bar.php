@@ -7,8 +7,8 @@
 /**
  * Define Namespaces
  */
-namespace Apos37\SimpleMaintenanceRedirect;
-use Apos37\SimpleMaintenanceRedirect\Settings;
+namespace PluginRx\SimpleMaintenanceRedirect;
+use PluginRx\SimpleMaintenanceRedirect\Settings;
 
 
 /**

@@ -7,7 +7,7 @@
 /**
  * Define Namespaces
  */
-namespace Apos37\SimpleMaintenanceRedirect;
+namespace PluginRx\SimpleMaintenanceRedirect;
 
 
 /**
@@ -48,16 +48,11 @@ class PluginPage {
      * @return array
      */
     public function settings_link( $links ) {
-        // Get the settings url
-        $url = esc_url( admin_url( 'options-general.php' ) );
-
-        // Add a link to it on our plugin
+        $url = esc_url( admin_url( 'options-general.php#smredirect_enabled' ) );
         array_unshift(
             $links,
             '<a href=' . $url . '>' . __( 'Settings', 'simple-maintenance-redirect' ) . '</a>'
         );
-
-        // Return the links
         return $links;
     } // End settings_link()
 
@@ -66,6 +61,7 @@ class PluginPage {
      * Add links to the website and discord
      *
      * @param array $links
+     * @param string $file
      * @return array
      */
     public function plugin_row_meta( $links, $file ) {

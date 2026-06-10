@@ -7,7 +7,7 @@
 /**
  * Define Namespaces
  */
-namespace Apos37\SimpleMaintenanceRedirect;
+namespace PluginRx\SimpleMaintenanceRedirect;
 
 
 /**
@@ -46,6 +46,7 @@ class Settings {
 
         // General settings fields
         add_action( 'admin_init', [ $this, 'general_settings' ] );
+        add_action( 'admin_notices', [ $this, 'maintenance_mode_notice' ] );
         
 	} // End init()
 
@@ -145,7 +146,7 @@ class Settings {
      * @return string|int
      */
     public function sanitize_page_id( $value ) {
-        return is_numeric( $value ) ? absint( $value ) : ( $value === 'url' ? 'url' : '' );
+        return is_numeric( $value ) ? absint( $value ) : '';
     } // End sanitize_page_id()
 
 
@@ -188,5 +189,44 @@ class Settings {
     public function get_url() {
         return esc_url( get_option( $this->url_option ) );
     } // End get_url()
+
+
+    /**
+     * Maintenance mode notice
+     *
+     * @return void
+     */
+    public function maintenance_mode_notice() {
+        $screen = get_current_screen();
+        if ( !$screen || $screen->id !== 'options-general' ) {
+            return;
+        }
+        $enabled = $this->enabled();
+        if ( !$enabled ) {
+            return;
+        }
+
+        if ( $enabled === 'page' ) {
+            $page_id = $this->get_page_id();
+            $page_title = get_the_title( $page_id );
+            $page_url = esc_url( get_permalink( $page_id ) );
+            $link = '<a href="' . $page_url . '" target="_blank">' . esc_html( $page_title ) . '</a>';
+            $message = sprintf(
+                // translators: %s is a link to the maintenance page.
+                __( 'Maintenance mode is currently active. Visitors are being redirected to your %s page. You can disable it below.', 'simple-maintenance-redirect' ),
+                $link
+            );
+        } else {
+            $url = $this->get_url();
+            $link = '<a href="' . esc_url( $url ) . '" target="_blank">' . esc_html( $url ) . '</a>';
+            $message = sprintf(
+                // translators: %s is the external redirect URL.
+                __( 'Maintenance mode is currently active. Visitors are being redirected to %s. You can disable it below.', 'simple-maintenance-redirect' ),
+                $link
+            );
+        }
+
+        echo '<div class="notice notice-warning"><p><strong>' . wp_kses( $message, [ 'a' => [ 'href' => [], 'target' => [] ] ] ) . '</strong></p></div>';
+    } // End maintenance_mode_notice()
 
 }

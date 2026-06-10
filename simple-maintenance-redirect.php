@@ -3,7 +3,7 @@
  * Plugin Name:         Simple Maintenance Redirect
  * Plugin URI:          https://pluginrx.com/plugin/simple-maintenance-redirect/
  * Description:         Redirect users to a specified page or external URL while in maintanence mode
- * Version:             1.1.2.1
+ * Version:             1.1.3
  * Requires at least:   6.0
  * Tested up to:        7.0
  * Requires PHP:        7.4
@@ -20,7 +20,7 @@
 /**
  * Define Namespace
  */
-namespace Apos37\SimpleMaintenanceRedirect;
+namespace PluginRx\SimpleMaintenanceRedirect;
 
 
 /**
@@ -57,6 +57,7 @@ define( 'SMREDIRECT_DISCORD_URL', $plugin_data[ 'discord_uri' ] );
 
 // Paths
 define( 'SMREDIRECT_INCLUDES_ABSPATH', plugin_dir_path( __FILE__ ) . 'inc/' );
+define( 'SMREDIRECT_INCLUDES_URL', plugin_dir_url( __FILE__ ) . 'inc/' );
 
 
 /**
