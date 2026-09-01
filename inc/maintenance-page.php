@@ -84,13 +84,18 @@ class MaintenancePage {
             return;
         }
 
+        $status_code = $this->SETTINGS->get_status_code();
+
         if ( !headers_sent() ) {
             if ( function_exists( 'nocache_headers' ) ) {
                 nocache_headers();
             }
-            header( 'HTTP/1.1 503 Service Unavailable' );
-            header( 'Retry-After: 3600' );
-            wp_redirect( $redirect_url, 302 );
+
+            if ( $status_code === 503 ) {
+                header( 'Retry-After: 3600' );
+            }
+
+            wp_redirect( $redirect_url, $status_code );
             exit;
         }
 
@@ -133,8 +138,15 @@ class MaintenancePage {
             'not_rest_request'     => !( defined( 'REST_REQUEST' ) && REST_REQUEST )
         ];
 
+        $current_page_id = get_queried_object_id();
+        $checks[ 'not_omitted' ] = !in_array( $current_page_id, $this->SETTINGS->get_omit_pages(), true );
+
         if ( !is_null( $page_id ) ) {
             $checks[ 'not_maintenance_page' ] = !is_page( $page_id );
+        }
+
+        if ( $this->SETTINGS->exempt_rest_requests() ) {
+            $checks[ 'not_rest_request' ] = !$this->is_rest_request();
         }
 
         // Allow developers to modify/add checks
@@ -152,6 +164,23 @@ class MaintenancePage {
         // Otherwise return true
         return true;
     } // End should_redirect_to_page()
+
+
+    /**
+     * Check if the current request is a REST API request
+     *
+     * @return bool
+     */
+    public function is_rest_request() : bool {
+        if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+            return true;
+        }
+
+        $rest_prefix = trailingslashit( rest_get_url_prefix() );
+        $request_uri = isset( $_SERVER[ 'REQUEST_URI' ] ) ? sanitize_text_field( wp_unslash( $_SERVER[ 'REQUEST_URI' ] ) ) : '';
+
+        return ( strpos( $request_uri, $rest_prefix ) !== false );
+    } // End is_rest_request()
 
 
     /**

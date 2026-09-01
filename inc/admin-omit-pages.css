@@ -1,0 +1,21 @@
+.smredirect-omit-wrap {
+    max-width: 420px;
+}
+
+.smredirect-omit-list {
+    border: 1px solid #c3c4c7;
+    max-height: 220px;
+    overflow-y: auto;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: #fff;
+}
+
+.smredirect-omit-item {
+    display: block;
+    padding: 4px 0;
+}
+
+.smredirect-omit-item.is-hidden {
+    display: none;
+}

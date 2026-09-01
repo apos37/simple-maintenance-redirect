@@ -2,10 +2,10 @@
 /**
  * Plugin Name:         Simple Maintenance Redirect
  * Plugin URI:          https://pluginrx.com/plugin/simple-maintenance-redirect/
- * Description:         Redirect users to a specified page or external URL while in maintanence mode
- * Version:             1.1.3
+ * Description:         Redirect users to a specified page or external URL while in maintenance mode
+ * Version:             1.2.0
  * Requires at least:   6.0
- * Tested up to:        7.0
+ * Tested up to:        7.1
  * Requires PHP:        7.4
  * Author:              PluginRx
  * Author URI:          https://pluginrx.com/
@@ -82,6 +82,7 @@ if ( version_compare( PHP_VERSION, SMREDIRECT_MIN_PHP_VERSION, '<=' ) ) {
 /**
  * Includes
  */
+require_once SMREDIRECT_INCLUDES_ABSPATH . 'recommended-plugins.php';
 require_once SMREDIRECT_INCLUDES_ABSPATH . 'settings.php';
 require_once SMREDIRECT_INCLUDES_ABSPATH . 'maintenance-page.php';
 require_once SMREDIRECT_INCLUDES_ABSPATH . 'plugin-page.php';

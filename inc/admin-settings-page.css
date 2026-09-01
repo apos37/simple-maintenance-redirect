@@ -1,0 +1,121 @@
+.smredirect-wrap {
+    max-width: none;
+}
+
+.smredirect-wrap h1 {
+    margin-bottom: 4px;
+}
+
+.smredirect-tagline {
+    color: #646970;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+/* Active status banner */
+.smredirect-status-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-left: 4px solid #d63638;
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.smredirect-status-banner .dashicons {
+    color: #d63638;
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.smredirect-status-banner-text p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.smredirect-status-banner-text p.smredirect-status-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.smredirect-status-banner-text a {
+    font-weight: 600;
+}
+
+/* Settings sections as cards */
+.smredirect-section {
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px;
+}
+
+.smredirect-section-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #dcdcde;
+}
+
+.smredirect-section-header h2 {
+    margin: 0;
+    font-size: 15px;
+}
+
+.smredirect-section-header p {
+    margin: 6px 0 0;
+    color: #646970;
+    font-size: 13px;
+}
+
+.smredirect-section-body {
+    padding: 4px 20px 4px;
+}
+
+.smredirect-field-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.smredirect-field-row:last-child {
+    border-bottom: none;
+}
+
+.smredirect-field-row label.smredirect-field-label {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.smredirect-field-row select,
+.smredirect-field-row input[type="url"],
+.smredirect-field-row input[type="text"] {
+    max-width: 400px;
+}
+
+.smredirect-field-row .description {
+    margin: 2px 0 0;
+    color: #646970;
+    font-size: 12px;
+}
+
+.smredirect-submit-row {
+    margin-top: 4px;
+}
+
+.smredirect-version {
+    font-size: 13px;
+    font-weight: 400;
+    color: #949494;
+    margin-left: 8px;
+}
