@@ -48,7 +48,7 @@ class PluginPage {
      * @return array
      */
     public function settings_link( $links ) {
-        $url = esc_url( admin_url( 'options-general.php#smredirect_enabled' ) );
+        $url = esc_url( admin_url( 'options-general.php?page=smredirect-settings' ) );
         array_unshift(
             $links,
             '<a href=' . $url . '>' . __( 'Settings', 'simple-maintenance-redirect' ) . '</a>'

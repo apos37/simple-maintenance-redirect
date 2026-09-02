@@ -4,7 +4,7 @@ Tags: maintenance mode, coming soon, redirect, construction, staging
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -77,12 +77,16 @@ If you're still being redirected away from your login page, one of these is almo
 We recommend using our [website support forum](https://pluginrx.com/support/plugin/simple-maintenance-redirect/) as the primary method for requesting features and getting help. You can also reach out via our [Discord support server](https://discord.gg/3HnzNEJVnR) or the [WordPress.org support forum](https://wordpress.org/support/plugin/simple-maintenance-redirect/), but please note that WordPress.org doesn’t always notify us of new posts, so it’s not ideal for time-sensitive issues.
 
 == Demo ==
-https://youtu.be/DTKGftmpBQ4
+https://youtu.be/5MexLJT0I2A
 
 == Screenshots ==
 1. Settings and admin bar
 
 == Changelog ==
+= 1.2.0.1 =
+* Tweak: Updated demo video
+* Fix: Settings action link on plugins page going to old settings page
+
 = 1.2.0 =
 * New: Dedicated settings page under Settings > Simple Maintenance Redirect (moved off Settings > General)
 * New: Omit specific pages from maintenance redirect, with a searchable page picker
